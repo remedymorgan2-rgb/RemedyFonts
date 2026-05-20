@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Remedy Fonts</string>
+    <string name="type_here">Type your text here…</string>
+    <string name="unlock_with_ad">Watch a short ad to unlock this style</string>
+    <string name="unlock_category">Unlock %s with one ad</string>
+    <string name="save_as_image">Save as Image</string>
+    <string name="copy_to_clipboard">Copied!</string>
+</resources>

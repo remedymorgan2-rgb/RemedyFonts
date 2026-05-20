@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.RemedyFonts" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#FFFF007F</item>
+        <item name="android:colorPrimaryDark">#FF0B0B0E</item>
+        <item name="android:colorAccent">#FF00FFFF</item>
+        <item name="android:windowBackground">#FF0B0B0E</item>
+        <item name="android:navigationBarColor">#FF0B0B0E</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
