@@ -19,7 +19,7 @@
         android:textSize="20sp"
         android:maxLines="3" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFonts"
         android:layout_width="match_parent"
         android:layout_height="0dp"

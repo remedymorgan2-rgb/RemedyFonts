@@ -31,16 +31,18 @@
             android:textColor="#BBBBBB" />
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/buttonCopy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Copy" />
+        android:text="Copy"
+        android:padding="8dp" />
 
-    <Button
+    <TextView
         android:id="@+id/buttonLock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🔒"
+        android:padding="8dp"
         android:visibility="visible" />
 </LinearLayout>

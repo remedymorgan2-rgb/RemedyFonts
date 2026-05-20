@@ -6,7 +6,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -24,12 +23,6 @@ class FontAdapter(
         notifyDataSetChanged()
     }
 
-    fun updateStyles(newStyles: List<FontStyle>) {
-        (styles as? MutableList)?.clear()
-        (styles as? MutableList)?.addAll(newStyles)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_font_style, parent, false)
         return ViewHolder(view)
@@ -37,12 +30,11 @@ class FontAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val style = styles[position]
-        val transformedText = style.transform(inputText.ifEmpty { "Hello World" })
-        
-        holder.textPreview.text = transformedText
+        val transformed = style.transform(inputText.ifEmpty { "Hello World" })
+
+        holder.textPreview.text = transformed
         holder.textStyleName.text = style.name
 
-        // Show lock icon only for premium fonts that aren't unlocked
         if (style.isPremium && !PrefsManager.isFontUnlocked(context, style.name)) {
             holder.buttonLock.visibility = View.VISIBLE
             holder.textPreview.alpha = 0.4f
@@ -53,8 +45,7 @@ class FontAdapter(
 
         holder.buttonCopy.setOnClickListener {
             val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("styled_text", transformedText)
-            clipboard.setPrimaryClip(clip)
+            clipboard.setPrimaryClip(ClipData.newPlainText("styled_text", transformed))
             Toast.makeText(context, "Copied!", Toast.LENGTH_SHORT).show()
         }
 
@@ -68,7 +59,7 @@ class FontAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textPreview: TextView = view.findViewById(R.id.textPreview)
         val textStyleName: TextView = view.findViewById(R.id.textStyleName)
-        val buttonCopy: ImageView = view.findViewById(R.id.buttonCopy)
-        val buttonLock: ImageView = view.findViewById(R.id.buttonLock)
+        val buttonCopy: TextView = view.findViewById(R.id.buttonCopy)
+        val buttonLock: TextView = view.findViewById(R.id.buttonLock)
     }
 }

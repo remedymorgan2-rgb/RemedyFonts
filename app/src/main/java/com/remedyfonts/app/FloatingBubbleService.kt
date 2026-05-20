@@ -20,7 +20,6 @@ class FloatingBubbleService : Service() {
 
     private lateinit var windowManager: WindowManager
     private lateinit var bubbleView: View
-    private lateinit var bubbleIcon: ImageView
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -29,8 +28,6 @@ class FloatingBubbleService : Service() {
         windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
         bubbleView = LayoutInflater.from(this).inflate(R.layout.bubble_layout, null)
-        bubbleIcon = bubbleView.findViewById(R.id.bubbleIcon)
-
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
@@ -70,12 +67,10 @@ class FloatingBubbleService : Service() {
                     MotionEvent.ACTION_UP -> {
                         if (Math.abs(event.rawX - initialTouchX) < 5 &&
                             Math.abs(event.rawY - initialTouchY) < 5) {
-                            // TAP - copy last styled text
                             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                             val lastText = clipboard.primaryClip?.getItemAt(0)?.text ?: "Nothing copied yet"
-                            val clip = ClipData.newPlainText("styled_text", lastText)
-                            clipboard.setPrimaryClip(clip)
-                            Toast.makeText(this@FloatingBubbleService, "Copied last text!", Toast.LENGTH_SHORT).show()
+                            clipboard.setPrimaryClip(ClipData.newPlainText("styled_text", lastText))
+                            Toast.makeText(this@FloatingBubbleService, "Copied!", Toast.LENGTH_SHORT).show()
                         }
                         return true
                     }

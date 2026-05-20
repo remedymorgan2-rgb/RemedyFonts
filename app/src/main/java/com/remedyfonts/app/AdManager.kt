@@ -8,8 +8,6 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
 object AdManager {
     private var rewardedAd: RewardedAd? = null
-    
-    // Test ad unit ID — replace with your real one before publishing
     private const val REWARDED_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917"
 
     fun loadRewardedAd(activity: Activity, onLoaded: () -> Unit = {}) {
@@ -19,7 +17,6 @@ object AdManager {
                 rewardedAd = ad
                 onLoaded()
             }
-
             override fun onAdFailedToLoad(error: LoadAdError) {
                 rewardedAd = null
             }
@@ -31,12 +28,9 @@ object AdManager {
             ad.show(activity) { rewardItem ->
                 onReward()
             }
-        } ?: run {
-            // Ad not ready, reload and try again
-            loadRewardedAd(activity) {
-                rewardedAd?.show(activity) { rewardItem ->
-                    onReward()
-                }
+        } ?: loadRewardedAd(activity) {
+            rewardedAd?.show(activity) { rewardItem ->
+                onReward()
             }
         }
     }

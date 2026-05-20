@@ -8,13 +8,11 @@ object PrefsManager {
     private const val KEY_UNLOCKED_FONTS = "unlocked_fonts"
     private const val KEY_UNLOCKED_CATEGORIES = "unlocked_categories"
 
-    private fun getPrefs(context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-    }
+    private fun getPrefs(context: Context): SharedPreferences =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     fun isFontUnlocked(context: Context, fontName: String): Boolean {
-        val unlocked = getPrefs(context).getStringSet(KEY_UNLOCKED_FONTS, emptySet()) ?: emptySet()
-        return unlocked.contains(fontName)
+        return getPrefs(context).getStringSet(KEY_UNLOCKED_FONTS, emptySet())?.contains(fontName) == true
     }
 
     fun unlockFont(context: Context, fontName: String) {
@@ -25,8 +23,7 @@ object PrefsManager {
     }
 
     fun isCategoryUnlocked(context: Context, category: String): Boolean {
-        val unlocked = getPrefs(context).getStringSet(KEY_UNLOCKED_CATEGORIES, emptySet()) ?: emptySet()
-        return unlocked.contains(category)
+        return getPrefs(context).getStringSet(KEY_UNLOCKED_CATEGORIES, emptySet())?.contains(category) == true
     }
 
     fun unlockCategory(context: Context, category: String) {
