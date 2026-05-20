@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FF0B0B0E"
     android:padding="16dp">
-
     <EditText
         android:id="@+id/editTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type your text here..."
-        android:padding="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAFFFFFF"
-        android:background="@drawable/edit_text_bg"
-        android:textSize="20sp"
-        android:maxLines="3" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFonts"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp" />
-
-    <Button
-        android:id="@+id/buttonQuotes"
+        android:hint="Type your text"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/textBold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quotes &amp; Letters"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFF007F" />
-
+        android:textSize="18sp"
+        android:padding="8dp"/>
     <Button
-        android:id="@+id/buttonBubble"
+        android:id="@+id/buttonUnlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quick Copy Bubble"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF1E90FF" />
+        android:text="Unlock Italic (Watch Ad)"/>
+    <TextView
+        android:id="@+id/textItalic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:alpha="0.5"/>
 </LinearLayout>
