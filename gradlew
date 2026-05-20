@@ -1,3 +1,3 @@
-#!/bin/bash
-export JAVA_HOME=/data/data/com.termux/files/usr/lib/jvm/java-17-openjdk
-exec gradle "$@"
+#!/bin/sh
+# Use the Java set up on the system (no hardcoded path)
+exec java -cp "gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
