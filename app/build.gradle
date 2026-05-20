@@ -5,13 +5,12 @@ plugins {
 
 android {
     namespace 'com.remedyfonts.app'
-    compileSdk 30
-    buildToolsVersion "30.0.3"
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.remedyfonts.app"
         minSdk 21
-        targetSdk 30
+        targetSdk 33
         versionCode 1
         versionName "1.0"
     }
